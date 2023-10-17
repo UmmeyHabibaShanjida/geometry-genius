@@ -62,6 +62,9 @@ function calculateParallelogramArea(){
 
     const area = base * height;
     setElementInnerText('parallelogram-area', area);
+
+    // add to calculation entry
+    addToCalculationEntry('parallelogram', area);
 }
 
 function calculateEllipseArea(){
@@ -85,6 +88,25 @@ function getInputValue(fieldId){
 function setElementInnerText(elementId, area){
     const element = document.getElementById(elementId);
     element.innerText = area;
+}
+
+
+// add to calculation entry
+/*
+1.get the element where you want to add the dynamic HTML
+2.create an element you want to add
+3.if needed add some class
+4.set innerHTML. it could be dynamic template string
+5.append the create element as a child of the parent
+ */
+function addToCalculationEntry(areaType, area){
+    console.log(areaType + ' ' + area)
+    const calculationEntry = document.getElementById('calculation-entry');
+
+    const p  = document.createElement('p');
+    p.innerHTML = areaType + ' ' + area;
+
+    calculationEntry.appendChild(p);
 }
 
 // Data validation
