@@ -41,3 +41,32 @@ function calculateRectangleArea(){
     const rectangleAreaSpan = document.getElementById('rectangle-area');
     rectangleAreaSpan.innerText = area;
 }
+
+
+
+// reuseable function --> reduce duplicate code 
+function calculateParallelogramArea(){
+    const base = getInputValue('parallelogram-base');
+    console.log(base);
+
+    const height = getInputValue('parallelogram-height');
+    console.log(height);
+
+    const area = base * height;
+    setElementInnerText('parallelogram-area', area)
+}
+
+// reuseable get input value field in number
+function getInputValue(fieldId){
+    const inputField = document.getElementById(fieldId);
+    const inputValueText = inputField.value;
+    const value = parseFloat(inputValueText);
+    return value;
+}
+
+
+// reuseable set text span, p , div, ect text
+function setElementInnerText(elementId, area){
+    const element = document.getElementById(elementId);
+    element.innerText = area;
+}
