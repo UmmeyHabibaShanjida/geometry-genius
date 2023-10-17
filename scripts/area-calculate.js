@@ -26,13 +26,19 @@ function calculateRectangleArea(){
     const widthField = document.getElementById('rectangle-width');
     const widthValueText = widthField.value;
     const width = parseFloat(widthValueText);
-    console.log(width)
+    console.log(width);
 
     // get rectangle length
     const lengthField = document.getElementById('rectangle-length');
     const lengthValueText = lengthField.value;
     const length = parseFloat(lengthValueText);
     console.log(length);
+
+    // validate input: width and length
+    if(isNaN(width) || isNaN(length)){
+        alert('please insert a number');
+        return;
+    }
 
     // calculate area
     const area = width * length;
@@ -47,13 +53,15 @@ function calculateRectangleArea(){
 // reuseable function --> reduce duplicate code 
 function calculateParallelogramArea(){
     const base = getInputValue('parallelogram-base');
-    console.log(base);
-
     const height = getInputValue('parallelogram-height');
-    console.log(height);
+    // validate
+    if(isNaN(base) || isNaN(height)){
+        alert('please insert number');
+        return;
+    }
 
     const area = base * height;
-    setElementInnerText('parallelogram-area', area)
+    setElementInnerText('parallelogram-area', area);
 }
 
 function calculateEllipseArea(){
@@ -78,3 +86,10 @@ function setElementInnerText(elementId, area){
     const element = document.getElementById(elementId);
     element.innerText = area;
 }
+
+// Data validation
+/**
+ *1.set the proper type of the input field.(number,date,email)
+ *2.check type using typeOf
+ *3.NaN means Not a Number. isNaN is checking whether the input is not a number or not. 
+ */
